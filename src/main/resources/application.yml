@@ -1,0 +1,19 @@
+server:
+  port: 8080
+  contextPath: /branchvisit
+
+spring:
+  profiles: local
+  jpa:
+    database: MYSQL
+    hibernate:
+      show_sql: true
+      format_sql: true
+      dialect: org.hibernate.dialect.MySQLDialect
+  datasource:
+    url: jdbc:mysql://localhost:3306/branch_visittrt
+    username: root
+    password: root
+    driverClassName: com.mysql.jdbc.Driver
+  #  defaultSchema:
+    maxPoolSize: 10
