@@ -3,6 +3,7 @@ package com.chhatrola.visitors.web.controller.impl;
 import com.chhatrola.visitors.web.model.Employee;
 import com.chhatrola.visitors.web.model.RequestData;
 import com.chhatrola.visitors.web.service.EmployeeService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("employee")
+@Api(value="Authoriser", description="Authoriser operation")
 public class EmployeeController {
 
     @Autowired

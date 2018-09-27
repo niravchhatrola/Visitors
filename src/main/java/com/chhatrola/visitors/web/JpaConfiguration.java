@@ -1,44 +1,24 @@
-//package com.infosys.branchvisit.base.configuration;
-//
-//import com.zaxxer.hikari.HikariDataSource;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.beans.factory.annotation.Value;
-//import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
-//import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
-//import org.springframework.boot.context.properties.ConfigurationProperties;
-//import org.springframework.context.annotation.Bean;
-//import org.springframework.context.annotation.Configuration;
-//import org.springframework.context.annotation.Primary;
-//import org.springframework.core.env.Environment;
-//import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-//import org.springframework.orm.jpa.JpaTransactionManager;
-//import org.springframework.orm.jpa.JpaVendorAdapter;
-//import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-//import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-//import org.springframework.transaction.PlatformTransactionManager;
-//import org.springframework.transaction.annotation.EnableTransactionManagement;
-//import springfox.documentation.builders.RequestHandlerSelectors;
-//import springfox.documentation.spi.DocumentationType;
-//import springfox.documentation.spring.web.plugins.Docket;
-//import springfox.documentation.swagger2.annotations.EnableSwagger2;
-//
-//import javax.naming.NamingException;
-//import javax.persistence.EntityManagerFactory;
-//import javax.sql.DataSource;
-//import java.util.Properties;
-//
-//import static springfox.documentation.builders.PathSelectors.regex;
-//
-///**
-// * Created by niv214 on 6/8/17.
-// */
-//@Configuration
-//@EnableJpaRepositories(basePackages = {"com.infosys.branchvisit.web.repository", "com.infosys.branchvisit.base.service", "com.infosys.branchvisit.base.repository"},
+package com.chhatrola.visitors.web;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import static springfox.documentation.builders.PathSelectors.regex;
+
+/**
+ * Created by niv214 on 6/8/17.
+ */
+@Configuration
+//@EnableJpaRepositories(basePackages = {"com.chhatrola.visitors.web.repository", "com.infosys.branchvisit.base.service", "com.infosys.branchvisit.base.repository"},
 //        entityManagerFactoryRef = "entityManagerFactory",
 //        transactionManagerRef = "transactionManager")
 //@EnableTransactionManagement
-//@EnableSwagger2
-//public class JpaConfiguration {
+@EnableSwagger2
+public class JpaConfiguration {
 //    @Autowired
 //    private Environment environment;
 //
@@ -119,16 +99,16 @@
 //        txManager.setEntityManagerFactory(emf);
 //        return txManager;
 //    }
-//
-//    /**
-//     * https://dzone.com/articles/spring-boot-restful-api-documentation-with-swagger
-//     * @return
-//     */
-//    @Bean
-//    public Docket productApi() {
-//        return new Docket(DocumentationType.SWAGGER_2)
-//                .select()                 .apis(RequestHandlerSelectors.basePackage("com.infosys.branchvisit.web.controller.impl"))
-//                .paths(regex("/*.*"))
-//                .build();
-//    }
-//}
+
+    /**
+     * https://dzone.com/articles/spring-boot-restful-api-documentation-with-swagger
+     * @return
+     */
+    @Bean
+    public Docket productApi() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .select()                 .apis(RequestHandlerSelectors.basePackage("com.chhatrola.visitors.web.controller.impl"))
+                .paths(regex("/*.*"))
+                .build();
+    }
+}
