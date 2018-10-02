@@ -1,7 +1,7 @@
 package com.chhatrola.visitors.web.controller.impl;
 
 import com.chhatrola.visitors.web.model.RequestData;
-import com.chhatrola.visitors.web.model.ResponseData;
+import com.chhatrola.visitors.web.model.Response;
 import com.chhatrola.visitors.web.service.EmployeeService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.swagger.annotations.Api;
@@ -21,7 +21,7 @@ public class EmployeeController {
     EmployeeService employeeService;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-    public ResponseEntity<ResponseData> login(@RequestBody RequestData requestData) throws JsonProcessingException {
+    public ResponseEntity<Response> login(@RequestBody RequestData requestData) throws JsonProcessingException {
         return employeeService.login(requestData);
     }
 

@@ -1,38 +1,34 @@
 package com.chhatrola.visitors.web.model;
 
+import java.util.List;
+
 public class ResponseData {
 
-    public ResponseData(String code, String data, String message) {
-        this.code = code;
-        this.data = data;
-        this.message = message;
+    private Long employeeId;
+    private String authToken;
+    private List<String> branchCodeList;
+
+    public Long getEmployeeId() {
+        return employeeId;
     }
 
-    private String code;
-    private String data;
-    private String message;
-
-    public String getCode() {
-        return code;
+    public void setEmployeeId(Long employeeId) {
+        this.employeeId = employeeId;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public String getAuthToken() {
+        return authToken;
     }
 
-    public String getData() {
-        return data;
+    public void setAuthToken(String authToken) {
+        this.authToken = authToken;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public List<String> getBranchCodeList() {
+        return branchCodeList;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
+    public void setBranchCodeList(List<String> branchCodeList) {
+        this.branchCodeList = branchCodeList;
     }
 }

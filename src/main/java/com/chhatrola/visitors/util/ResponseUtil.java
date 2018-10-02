@@ -1,6 +1,6 @@
 package com.chhatrola.visitors.util;
 
-import com.chhatrola.visitors.web.model.ResponseData;
+import com.chhatrola.visitors.web.model.Response;
 import com.chhatrola.visitors.web.model.ResponseStatus;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.http.HttpStatus;
@@ -14,7 +14,7 @@ public class ResponseUtil {
      * @param data
      * @return
      */
-    public static ResponseEntity<ResponseData> prepareResponse(ResponseStatus status, Object data) throws JsonProcessingException {
-        return new ResponseEntity<>(new ResponseData(status.getCode(), JsonUtil.toJson(data), status.getMessage()), HttpStatus.OK);
+    public static ResponseEntity<Response> prepareResponse(ResponseStatus status, Object data) throws JsonProcessingException {
+        return new ResponseEntity<>(new Response(status.getCode(), JsonUtil.toJson(data), status.getMessage()), HttpStatus.OK);
     }
 }
