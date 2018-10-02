@@ -18,9 +18,9 @@ public class Vendor {
     @Column(name = "vendor_desc")
     private String vendorDesc;
 
-    @OneToMany(targetEntity = Vendor.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "contractor_id")
-    private Set<Contractor> contractors;
+//    @OneToMany(targetEntity = Vendor.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    @JoinColumn(name = "contractor_id")
+//    private Set<Contractor> contractors;
 
     public Long getVendorId() {
         return vendorId;
@@ -46,11 +46,5 @@ public class Vendor {
         this.vendorDesc = vendorDesc;
     }
 
-    public Set<Contractor> getContractors() {
-        return contractors;
-    }
 
-    public void setContractors(Set<Contractor> contractors) {
-        this.contractors = contractors;
-    }
 }

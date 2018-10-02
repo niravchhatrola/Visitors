@@ -28,12 +28,12 @@ public class EmployeeService {
     public ResponseEntity<Response> login(RequestData requestData) throws JsonProcessingException {
 
         List<Employee> employeeList = employeeRepository.findByUserName(requestData.getUserName());
-        if(employeeList == null || employeeList.isEmpty()){
+        if (employeeList == null || employeeList.isEmpty()) {
             return ResponseUtil.prepareResponse(ResponseStatus.INVALID_USER, "");
         }
         Employee employee = employeeList.get(0);
         boolean isBranchExists = branchRepository.existsByBranchCode(requestData.getBranchCode());
-        if(!isBranchExists){
+        if (!isBranchExists) {
             return ResponseUtil.prepareResponse(ResponseStatus.INVALID_BRANCH, "");
         }
         String authToken = GeneratorUtil.generateUuid();
@@ -44,6 +44,15 @@ public class EmployeeService {
         responseData.setBranchCodeList(branchList);
         responseData.setAuthToken(authToken);
         responseData.setEmployeeId(employee.getEmployeeId());
-        return ResponseUtil.prepareResponse(ResponseStatus.LOGIN_SUCCESSFULL, branchList);
+        return ResponseUtil.prepareResponse(ResponseStatus.LOGIN_SUCCESSFULL, responseData);
     }
+
+    public ResponseEntity<Response> logout(RequestData requestData) throws JsonProcessingException {
+        Employee employee = employeeRepository.getOne(requestData.getEmpId());
+        employee.setEmpAuthToken(null);
+        employeeRepository.save(employee);
+        return ResponseUtil.prepareResponse(ResponseStatus.LOGOUT_SUCCESSFULL, "");
+    }
+
+
 }

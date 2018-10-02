@@ -17,11 +17,6 @@ public class Contractor {
     @Column(name = "contractor_name")
     private String contractorName;
 
-    @ManyToOne
-    @JoinColumn(name = "vendor_id")
-    private Vendor vendor;
-
-
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "contractor_id")
     private List<ContractorVisit> contractorVisits = new ArrayList<>();
@@ -58,14 +53,6 @@ public class Contractor {
 
     public void setContractorVisits(List<ContractorVisit> contractorVisits) {
         this.contractorVisits = contractorVisits;
-    }
-
-    public Vendor getVendor() {
-        return vendor;
-    }
-
-    public void setVendor(Vendor vendor) {
-        this.vendor = vendor;
     }
 
     public String getContractorIdNumber() {

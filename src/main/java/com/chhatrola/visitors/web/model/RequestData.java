@@ -1,9 +1,19 @@
 package com.chhatrola.visitors.web.model;
+import java.util.Date;
 
 public class RequestData {
     private String branchCode;
     private String userName;
     private String password;
+    private Long empId;
+    private String authToken;
+    private Long vendorId;
+    private String contractorName;
+    private Long jobCode;
+    private String contractorIdNumber;
+    private String contractorIdType;
+    private String contractorIdExpIDDate;
+    private Boolean hazardRegViewed;
 
     public String getBranchCode() {
         return branchCode;
@@ -27,5 +37,77 @@ public class RequestData {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Long getEmpId() {
+        return empId;
+    }
+
+    public void setEmpId(Long empId) {
+        this.empId = empId;
+    }
+
+    public String getAuthToken() {
+        return authToken;
+    }
+
+    public void setAuthToken(String authToken) {
+        this.authToken = authToken;
+    }
+
+    public Long getVendorId() {
+        return vendorId;
+    }
+
+    public void setVendorId(Long vendorId) {
+        this.vendorId = vendorId;
+    }
+
+    public String getContractorName() {
+        return contractorName;
+    }
+
+    public void setContractorName(String contractorName) {
+        this.contractorName = contractorName;
+    }
+
+    public Long getJobCode() {
+        return jobCode;
+    }
+
+    public void setJobCode(Long jobCode) {
+        this.jobCode = jobCode;
+    }
+
+    public String getContractorIdNumber() {
+        return contractorIdNumber;
+    }
+
+    public void setContractorIdNumber(String contractorIdNumber) {
+        this.contractorIdNumber = contractorIdNumber;
+    }
+
+    public String getContractorIdType() {
+        return contractorIdType;
+    }
+
+    public void setContractorIdType(String contractorIdType) {
+        this.contractorIdType = contractorIdType;
+    }
+
+    public String getContractorIdExpIDDate() {
+        return contractorIdExpIDDate;
+    }
+
+    public void setContractorIdExpIDDate(String contractorIdExpIDDate) {
+        this.contractorIdExpIDDate = contractorIdExpIDDate;
+    }
+
+    public Boolean getHazardRegViewed() {
+        return hazardRegViewed;
+    }
+
+    public void setHazardRegViewed(Boolean hazardRegViewed) {
+        this.hazardRegViewed = hazardRegViewed;
     }
 }

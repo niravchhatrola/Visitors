@@ -7,6 +7,7 @@ public class ResponseData {
     private Long employeeId;
     private String authToken;
     private List<String> branchCodeList;
+    private Long contractorVisitId;
 
     public Long getEmployeeId() {
         return employeeId;
@@ -30,5 +31,13 @@ public class ResponseData {
 
     public void setBranchCodeList(List<String> branchCodeList) {
         this.branchCodeList = branchCodeList;
+    }
+
+    public Long getContractorVisitId() {
+        return contractorVisitId;
+    }
+
+    public void setContractorVisitId(Long contractorVisitId) {
+        this.contractorVisitId = contractorVisitId;
     }
 }

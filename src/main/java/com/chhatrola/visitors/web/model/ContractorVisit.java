@@ -27,9 +27,6 @@ public class ContractorVisit {
     @Column(name = "signature_path")
     private String signaturePath;
 
-    @Column(name = "contractor_document")
-    private String contractorDocument;
-
     @Column(name = "signed_out")
     private String signedOut;
 
@@ -55,6 +52,10 @@ public class ContractorVisit {
     @ManyToOne(targetEntity = Branch.class)
     @JoinColumn(name = "branch_code")
     private Branch branch;
+
+    @ManyToOne
+    @JoinColumn(name = "vendor_id")
+    private Vendor vendor;
 
     public Long getContactorVisitId() {
         return contactorVisitId;
@@ -94,14 +95,6 @@ public class ContractorVisit {
 
     public void setSignaturePath(String signaturePath) {
         this.signaturePath = signaturePath;
-    }
-
-    public String getContractorDocument() {
-        return contractorDocument;
-    }
-
-    public void setContractorDocument(String contractorDocument) {
-        this.contractorDocument = contractorDocument;
     }
 
     public String getSignedOut() {
@@ -158,5 +151,13 @@ public class ContractorVisit {
 
     public void setBranch(Branch branch) {
         this.branch = branch;
+    }
+
+    public Vendor getVendor() {
+        return vendor;
+    }
+
+    public void setVendor(Vendor vendor) {
+        this.vendor = vendor;
     }
 }

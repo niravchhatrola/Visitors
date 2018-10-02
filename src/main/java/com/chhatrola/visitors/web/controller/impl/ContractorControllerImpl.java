@@ -1,22 +1,32 @@
 package com.chhatrola.visitors.web.controller.impl;
 
-/**
- * Created by niv214 on 27/8/17.
- */
-//@RestController
-//@RequestMapping("contractor")
-//@Api(value="Contractor", description="Contractor Management operation")
+import com.chhatrola.visitors.web.model.RequestData;
+import com.chhatrola.visitors.web.model.Response;
+import com.chhatrola.visitors.web.service.ContractorService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import io.swagger.annotations.Api;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.text.ParseException;
+
+@RestController
+@RequestMapping("contractor")
+@Api(value="Contractor", description="Contractor Management operation")
 public class ContractorControllerImpl {
 
-//    @Autowired
-//    ContractorService contractorService;
-//
-//    @RequestMapping(value = "/create", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-//    public ResponseEntity<String> create(@RequestBody Authoriser authoriser){
-//        String result = contractorService.create(authoriser);
-//        return new ResponseEntity<String>(result, HttpStatus.OK);
-//    }
-//
+    @Autowired
+    ContractorService contractorService;
+
+    @RequestMapping(value = "/create", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    public ResponseEntity<Response> create(@RequestBody RequestData requestData) throws JsonProcessingException, ParseException {
+        return contractorService.createContractor(requestData);
+    }
+
 //    @RequestMapping(value = "/fetchSignedInContractors", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
 //    public ResponseEntity<List<Contractor>> fetchSignedInContractors(@RequestBody Authoriser authoriserView){
 //        List<Contractor> contractors = contractorService.fetchSignedInContractors(authoriserView.getId());

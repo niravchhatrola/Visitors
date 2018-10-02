@@ -25,4 +25,9 @@ public class EmployeeController {
         return employeeService.login(requestData);
     }
 
+    @RequestMapping(value = "/logout", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    public ResponseEntity<Response> logout(@RequestBody RequestData requestData) throws JsonProcessingException {
+        return employeeService.logout(requestData);
+    }
+
 }
