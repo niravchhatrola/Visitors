@@ -1,11 +1,11 @@
 package com.chhatrola.visitors.web.controller.impl;
 
-import com.chhatrola.visitors.web.model.Employee;
 import com.chhatrola.visitors.web.model.RequestData;
+import com.chhatrola.visitors.web.model.ResponseData;
 import com.chhatrola.visitors.web.service.EmployeeService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,12 +21,8 @@ public class EmployeeController {
     EmployeeService employeeService;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-    public ResponseEntity<Employee> login(@RequestBody RequestData requestData) {
-        Employee employee = employeeService.login(requestData);
-        if(employee == null){
-            return new ResponseEntity<Employee>(HttpStatus.UNAUTHORIZED);
-        }
-        return new ResponseEntity<Employee>(employee, HttpStatus.OK);
+    public ResponseEntity<ResponseData> login(@RequestBody RequestData requestData) throws JsonProcessingException {
+        return employeeService.login(requestData);
     }
 
 }

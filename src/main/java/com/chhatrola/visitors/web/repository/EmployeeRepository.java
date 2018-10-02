@@ -10,6 +10,5 @@ import java.util.List;
 @Component
 @Repository("employeeRepository")
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
-    public List<Employee> findByUserNameAndBranch_BranchCode(String userName, String branchCode);
-//    public List<Employee> findByUserNameAndBranchCode(String userName, String branchCode);
+    public List<Employee> findByUserName(String userName);
 }

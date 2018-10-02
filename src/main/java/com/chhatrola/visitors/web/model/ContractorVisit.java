@@ -52,6 +52,10 @@ public class ContractorVisit {
     @JoinColumn(name = "document_id")
     private DocumentType documentType;
 
+    @ManyToOne(targetEntity = Branch.class)
+    @JoinColumn(name = "branch_code")
+    private Branch branch;
+
     public Long getContactorVisitId() {
         return contactorVisitId;
     }
@@ -146,5 +150,13 @@ public class ContractorVisit {
 
     public void setDocumentType(DocumentType documentType) {
         this.documentType = documentType;
+    }
+
+    public Branch getBranch() {
+        return branch;
+    }
+
+    public void setBranch(Branch branch) {
+        this.branch = branch;
     }
 }

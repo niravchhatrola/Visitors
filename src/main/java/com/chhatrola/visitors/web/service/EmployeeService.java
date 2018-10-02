@@ -1,8 +1,41 @@
 package com.chhatrola.visitors.web.service;
 
-import com.chhatrola.visitors.web.model.Employee;
-import com.chhatrola.visitors.web.model.RequestData;
+import com.chhatrola.visitors.util.ResponseUtil;
+import com.chhatrola.visitors.web.model.*;
+import com.chhatrola.visitors.web.repository.BranchRepository;
+import com.chhatrola.visitors.web.repository.ContractorVisitRepository;
+import com.chhatrola.visitors.web.repository.EmployeeRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
-public interface EmployeeService {
-    Employee login(RequestData requestData);
+import java.util.List;
+
+@Service("employeeService")
+public class EmployeeService {
+
+    @Autowired
+    EmployeeRepository employeeRepository;
+
+    @Autowired
+    BranchRepository branchRepository;
+
+    @Autowired
+    ContractorVisitRepository contractorVisitRepository;
+
+    public ResponseEntity<ResponseData> login(RequestData requestData) throws JsonProcessingException {
+
+//        List<Employee> employeeList = employeeRepository.findByUserName(requestData.getUserName());
+//        if(employeeList == null && employeeList.isEmpty()){
+//            return ResponseUtil.prepareResponse(ResponseStatus.INVALID_USER, "");
+//        }
+//        boolean isBranchExists = branchRepository.existsByBranchCode(requestData.getBranchCode());
+//        if(!isBranchExists){
+//            return ResponseUtil.prepareResponse(ResponseStatus.INVALID_BRANCH, "");
+//        }
+//        List<String> branchList = contractorVisitRepository.findBranch_BranchCodeByEmployee_EmployeeId(employeeList.get(0).getEmployeeId());
+        List<String> branchList = contractorVisitRepository.findBranch_BranchCodeByEmployee_EmployeeId(214l);
+        return ResponseUtil.prepareResponse(ResponseStatus.LOGIN_SUCCESSFULL, branchList);
+    }
 }
