@@ -10,7 +10,8 @@ public enum ResponseStatus {
     NO_SIGNED_IN_CONTRACTORS("2005", "no signed in contractors"),
     SUCCESSFULLY_FETCHED_SIGND_IN_CONTRACTORS("2006", "Successfully fetched signd in contractors"),
     SUCCESSFULLY_FETCHED_SIGND_OUT_CONTRACTORS("2007", "Successfully fetched signd out contractors"),
-    NO_SIGNED_OUT_CONTRACTORS("2008", "no signed in contractors");
+    NO_SIGNED_OUT_CONTRACTORS("2008", "no signed in contractors"),
+    CONTRACTOR_SUCCESSFULLY_SIGNED_OUT("2009", "Contractor successfully signed out");
 
     ResponseStatus(String code, String message){
         this.code = code;

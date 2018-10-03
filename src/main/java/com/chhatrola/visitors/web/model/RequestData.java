@@ -14,6 +14,7 @@ public class RequestData {
     private String contractorIdType;
     private String contractorIdExpIDDate;
     private Boolean hazardRegViewed;
+    private Long contractorId;
 
     public String getBranchCode() {
         return branchCode;
@@ -109,5 +110,13 @@ public class RequestData {
 
     public void setHazardRegViewed(Boolean hazardRegViewed) {
         this.hazardRegViewed = hazardRegViewed;
+    }
+
+    public Long getContractorId() {
+        return contractorId;
+    }
+
+    public void setContractorId(Long contractorId) {
+        this.contractorId = contractorId;
     }
 }

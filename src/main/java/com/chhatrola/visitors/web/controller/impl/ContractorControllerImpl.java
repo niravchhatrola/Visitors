@@ -37,18 +37,11 @@ public class ContractorControllerImpl {
         return contractorService.fetchSignedOutContractors(requestData);
     }
 
-//    @RequestMapping(value = "/fetchSignedInContractors", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-//    public ResponseEntity<List<Contractor>> fetchSignedInContractors(@RequestBody Authoriser authoriserView){
-//        List<Contractor> contractors = contractorService.fetchSignedInContractors(authoriserView.getId());
-//        return new ResponseEntity<List<Contractor>>(contractors, HttpStatus.OK);
-//    }
-//
-//    @RequestMapping(value = "/fetchSignedOutContractors", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-//    public ResponseEntity<List<Contractor>> fetchSignedOutContractors(@RequestBody Authoriser authoriserView){
-//        List<Contractor> contractors = contractorService.fetchSignedInContractors(authoriserView.getId());
-//        return new ResponseEntity<List<Contractor>>(contractors, HttpStatus.OK);
-//    }
-//
+    @RequestMapping(value = "/contractorSignOut", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    public ResponseEntity<Response> contractorSignOut(@RequestBody RequestData requestData) throws JsonProcessingException, ParseException {
+        return contractorService.contractorSignOut(requestData);
+    }
+
 //    @RequestMapping(value = "/contractorSignOut", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
 //    public ResponseEntity<String> contractorSignOut(Long authoriserId, Long contractorId){
 //        contractorService.contractorSignOut(new Authoriser());

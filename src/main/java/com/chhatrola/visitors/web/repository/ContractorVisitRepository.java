@@ -14,4 +14,7 @@ public interface ContractorVisitRepository extends JpaRepository<ContractorVisit
     List<String> findBranch_BranchCodeByEmployee_EmployeeId(Long employeeId);
 
     List<ContractorVisit> findByEmployee_employeeIdAndSignedOutAndBranch_BranchCode(Long employeeId, String signedOut, String branchCode);
+
+    List<ContractorVisit> findByContractor_ContractorIdAndEmployee_employeeIdAndSignedOutAndBranch_BranchCode(Long contractorId, Long employeeId, String signedOut, String branchCode);
+
 }

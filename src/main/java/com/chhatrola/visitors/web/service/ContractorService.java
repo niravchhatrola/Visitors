@@ -90,4 +90,14 @@ public class ContractorService {
         responseData.setContractorVisitList(signedInContractor);
         return ResponseUtil.prepareResponse(ResponseStatus.SUCCESSFULLY_FETCHED_SIGND_OUT_CONTRACTORS, responseData);
     }
+
+    public ResponseEntity<Response> contractorSignOut(RequestData requestData) throws JsonProcessingException{
+        List<ContractorVisit> contractorVisits = contractorVisitRepository.findByContractor_ContractorIdAndEmployee_employeeIdAndSignedOutAndBranch_BranchCode(requestData.getContractorId(), requestData.getEmpId(), "true", requestData.getBranchCode());
+        for(ContractorVisit contractorVisit : contractorVisits){
+            contractorVisit.setSignedOut("false");
+            contractorVisit.setVisitOutTime(new Date());
+            contractorVisitRepository.save(contractorVisit);
+        }
+        return ResponseUtil.prepareResponse(ResponseStatus.CONTRACTOR_SUCCESSFULLY_SIGNED_OUT, "");
+    }
 }
