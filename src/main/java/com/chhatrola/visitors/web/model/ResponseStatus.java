@@ -6,7 +6,11 @@ public enum ResponseStatus {
     INVALID_USER("2001", "Invalid User"),
     INVALID_BRANCH("2002", "Invalid Branch"),
     LOGOUT_SUCCESSFULL("2003", "Logout Successful"),
-    CONTRACTOR_VISIT_SUCCESSFULLY_CREATED("2004", "Contractor visit successfully created");
+    CONTRACTOR_VISIT_SUCCESSFULLY_CREATED("2004", "Contractor visit successfully created"),
+    NO_SIGNED_IN_CONTRACTORS("2005", "no signed in contractors"),
+    SUCCESSFULLY_FETCHED_SIGND_IN_CONTRACTORS("2006", "Successfully fetched signd in contractors"),
+    SUCCESSFULLY_FETCHED_SIGND_OUT_CONTRACTORS("2007", "Successfully fetched signd out contractors"),
+    NO_SIGNED_OUT_CONTRACTORS("2008", "no signed in contractors");
 
     ResponseStatus(String code, String message){
         this.code = code;

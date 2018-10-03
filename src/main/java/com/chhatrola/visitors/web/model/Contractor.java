@@ -17,9 +17,9 @@ public class Contractor {
     @Column(name = "contractor_name")
     private String contractorName;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "contractor_id")
-    private List<ContractorVisit> contractorVisits = new ArrayList<>();
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    @JoinColumn(name = "contractor_id")
+//    private List<ContractorVisit> contractorVisits = new ArrayList<>();
 
     @Column(name = "contractor_id_number")
     private String contractorIdNumber;
@@ -47,13 +47,13 @@ public class Contractor {
         this.contractorName = contractorName;
     }
 
-    public List<ContractorVisit> getContractorVisits() {
-        return contractorVisits;
-    }
-
-    public void setContractorVisits(List<ContractorVisit> contractorVisits) {
-        this.contractorVisits = contractorVisits;
-    }
+//    public List<ContractorVisit> getContractorVisits() {
+//        return contractorVisits;
+//    }
+//
+//    public void setContractorVisits(List<ContractorVisit> contractorVisits) {
+//        this.contractorVisits = contractorVisits;
+//    }
 
     public String getContractorIdNumber() {
         return contractorIdNumber;

@@ -33,27 +33,27 @@ public class ContractorVisit {
     @Column(name = "hazard_reg_viewed")
     private Boolean hazardRegViewed;
 
-    @ManyToOne(targetEntity = Employee.class)
+    @ManyToOne(targetEntity = Employee.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id")
     private Employee employee;
 
-    @ManyToOne(targetEntity = Contractor.class)
+    @ManyToOne(targetEntity = Contractor.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "contractor_id")
     private Contractor contractor;
 
-    @ManyToOne(targetEntity = JobType.class)
+    @ManyToOne(targetEntity = JobType.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "job_code")
     private JobType jobType;
 
-    @ManyToOne(targetEntity = DocumentType.class)
+    @ManyToOne(targetEntity = DocumentType.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "document_id")
     private DocumentType documentType;
 
-    @ManyToOne(targetEntity = Branch.class)
+    @ManyToOne(targetEntity = Branch.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "branch_code")
     private Branch branch;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = Vendor.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "vendor_id")
     private Vendor vendor;
 

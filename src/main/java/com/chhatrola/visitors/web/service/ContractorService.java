@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Date;
+import java.util.List;
 
 @Service("contractorService")
 public class ContractorService {
@@ -62,10 +63,31 @@ public class ContractorService {
         contractorVisit.setVisitInTime(new Date());
         contractorVisit.setHazardRegViewed(requestData.getHazardRegViewed());
         contractorVisit.setVendor(vendorRepository.findOne(requestData.getVendorId()));
+        contractorVisit.setSignedOut("true");
         contractorVisit = contractorVisitRepository.save(contractorVisit);
 
         ResponseData responseData = new ResponseData();
         responseData.setContractorVisitId(contractorVisit.getContactorVisitId());
         return ResponseUtil.prepareResponse(ResponseStatus.CONTRACTOR_VISIT_SUCCESSFULLY_CREATED, responseData);
+    }
+
+    public ResponseEntity<Response> fetchSignedInContractors(RequestData requestData) throws JsonProcessingException{
+        List<ContractorVisit> signedInContractor = contractorVisitRepository.findByEmployee_employeeIdAndSignedOutAndBranch_BranchCode(requestData.getEmpId(), "true", requestData.getBranchCode());
+        if(signedInContractor == null || signedInContractor.isEmpty()){
+            return ResponseUtil.prepareResponse(ResponseStatus.NO_SIGNED_IN_CONTRACTORS, "");
+        }
+        ResponseData responseData = new ResponseData();
+        responseData.setContractorVisitList(signedInContractor);
+        return ResponseUtil.prepareResponse(ResponseStatus.SUCCESSFULLY_FETCHED_SIGND_IN_CONTRACTORS, responseData);
+    }
+
+    public ResponseEntity<Response> fetchSignedOutContractors(RequestData requestData) throws JsonProcessingException{
+        List<ContractorVisit> signedInContractor = contractorVisitRepository.findByEmployee_employeeIdAndSignedOutAndBranch_BranchCode(requestData.getEmpId(), "false", requestData.getBranchCode());
+        if(signedInContractor == null || signedInContractor.isEmpty()){
+            return ResponseUtil.prepareResponse(ResponseStatus.NO_SIGNED_OUT_CONTRACTORS, "");
+        }
+        ResponseData responseData = new ResponseData();
+        responseData.setContractorVisitList(signedInContractor);
+        return ResponseUtil.prepareResponse(ResponseStatus.SUCCESSFULLY_FETCHED_SIGND_OUT_CONTRACTORS, responseData);
     }
 }

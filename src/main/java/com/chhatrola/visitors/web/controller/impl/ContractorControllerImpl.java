@@ -27,6 +27,16 @@ public class ContractorControllerImpl {
         return contractorService.createContractor(requestData);
     }
 
+    @RequestMapping(value = "/fetchSignedInContractors", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    public ResponseEntity<Response> fetchSignedInContractors(@RequestBody RequestData requestData) throws JsonProcessingException, ParseException {
+        return contractorService.fetchSignedInContractors(requestData);
+    }
+
+    @RequestMapping(value = "/fetchSignedOutContractors", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    public ResponseEntity<Response> fetchSignedOutContractors(@RequestBody RequestData requestData) throws JsonProcessingException, ParseException {
+        return contractorService.fetchSignedOutContractors(requestData);
+    }
+
 //    @RequestMapping(value = "/fetchSignedInContractors", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
 //    public ResponseEntity<List<Contractor>> fetchSignedInContractors(@RequestBody Authoriser authoriserView){
 //        List<Contractor> contractors = contractorService.fetchSignedInContractors(authoriserView.getId());
