@@ -6,6 +6,8 @@ import com.chhatrola.visitors.web.model.*;
 import com.chhatrola.visitors.web.repository.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service("contractorService")
 public class ContractorService {
@@ -99,5 +102,33 @@ public class ContractorService {
             contractorVisitRepository.save(contractorVisit);
         }
         return ResponseUtil.prepareResponse(ResponseStatus.CONTRACTOR_SUCCESSFULLY_SIGNED_OUT, "");
+    }
+
+    public ResponseEntity<Response> searchContractor(RequestData requestData) throws JsonProcessingException{
+//        List<ContractorVisit> contractorVisits = contractorVisitRepository.findByContractor_ContractorIdAndEmployee_employeeIdAndSignedOutAndBranch_BranchCode(requestData.getContractorId(), requestData.getEmpId(), "true", requestData.getBranchCode());
+//        for(ContractorVisit contractorVisit : contractorVisits){
+//            contractorVisit.setSignedOut("false");
+//            contractorVisit.setVisitOutTime(new Date());
+//            contractorVisitRepository.save(contractorVisit);
+//        }
+
+
+        ContractorVisit contractorVisit = new ContractorVisit();
+//        contractorVisit.setEmployee(employeeRepository.findOne(requestData.getEmpId()));
+        contractorVisit.setVendor(vendorRepository.findOne(requestData.getVendorId()));
+        contractorVisit.setBranch(branchRepository.findOne(requestData.getBranchCode()));
+        contractorVisit.setContractor(contractorRepository.findByContractorName(requestData.getContractorName()));
+        contractorVisit.setJobType(jobTypeRepository.findOne(requestData.getJobCode()));
+        Example<ContractorVisit> contractorVisitExample = Example.of(contractorVisit);
+
+//        matcher.getPropertySpecifiers().getSpecifiers().
+        List<ContractorVisit> all = contractorVisitRepository.findAll(contractorVisitExample);
+//        List<Contractor> contractors = all.stream().map(ContractorVisit::getContractor).collect(Collectors.toList());
+
+//        ExampleMatcher.PropertySpecifiers propertySpecifiers = contractorVisitExample.getMatcher().getPropertySpecifiers();
+//        propertySpecifiers.add(new ExampleMatcher.PropertySpecifier().);
+        ResponseData responseData = new ResponseData();
+        responseData.setContractorVisitList(all);
+        return ResponseUtil.prepareResponse(ResponseStatus.CONTRACTOR_SUCCESSFULLY_SIGNED_OUT, responseData);
     }
 }

@@ -39,7 +39,7 @@ public class EmployeeService {
         String authToken = GeneratorUtil.generateUuid();
         employee.setEmpAuthToken(authToken);
         employeeRepository.save(employee);
-        List<String> branchList = contractorVisitRepository.findBranchByEmployee_EmployeeId(1l);
+        List<String> branchList = contractorVisitRepository.findBranchByEmployee_EmployeeId(employee.getEmployeeId());
         ResponseData responseData = new ResponseData();
         responseData.setBranchCodeList(branchList);
         responseData.setAuthToken(authToken);

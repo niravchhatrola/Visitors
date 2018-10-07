@@ -119,4 +119,5 @@ public class RequestData {
     public void setContractorId(Long contractorId) {
         this.contractorId = contractorId;
     }
+
 }

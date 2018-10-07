@@ -64,4 +64,12 @@ public class ContractorControllerImpl {
 //    public ResponseEntity<String> uploadDocument(@RequestParam MultipartFile signature, @RequestParam Long contractorId, @RequestParam Long authoriserId){
 //        return new ResponseEntity<String>("Successfully Uploaded.", HttpStatus.OK);
 //    }
+
+
+//    {authoriser_id, from_date, to_date, vendor_name, contractor_name, job_type, branch_code}
+
+    @RequestMapping(value = "/searchContractor", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    public ResponseEntity<Response> searchContracor(@RequestBody RequestData requestData) throws JsonProcessingException, ParseException {
+        return contractorService.searchContractor(requestData);
+    }
 }

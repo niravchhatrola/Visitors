@@ -26,4 +26,9 @@ public interface ContractorVisitRepository extends JpaRepository<ContractorVisit
 
     List<ContractorVisit> findByContractor_ContractorIdAndEmployee_employeeIdAndSignedOutAndBranch_BranchCode(Long contractorId, Long employeeId, String signedOut, String branchCode);
 
+    //    {authoriser_id, from_date, to_date, vendor_name, contractor_name, job_type, branch_code}
+
+    @Query("select contractor0_.contractor from ContractorVisit contractor0_ left outer join contractor0_.employee employee1_ where employee1_.employeeId=:employeeId")
+    List<String> searchContractor(@Param("employeeId") Long employeeId);
+
 }

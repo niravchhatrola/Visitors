@@ -14,4 +14,6 @@ public interface ContractorRepository extends JpaRepository<Contractor, Long>{
 
     Contractor findByContractorIdNumber(String contractorIdNumber);
 
+    Contractor findByContractorName(String contractorName);
+
 }

@@ -37,7 +37,7 @@ public class ContractorVisit {
     @JoinColumn(name = "employee_id")
     private Employee employee;
 
-    @ManyToOne(targetEntity = Contractor.class, fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = Contractor.class)
     @JoinColumn(name = "contractor_id")
     private Contractor contractor;
 
