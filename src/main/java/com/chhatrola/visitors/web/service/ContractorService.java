@@ -10,7 +10,12 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Date;
@@ -19,14 +24,13 @@ import java.util.stream.Collectors;
 
 @Service("contractorService")
 public class ContractorService {
-//
-//    String create(Authoriser contractorView);
-//
-//    List<Contractor> fetchSignedInContractors(Long authoriserId);
-//
-//    List<Contractor> fetchSignedOutContractors(Long authoriserId);
-//
-//    String contractorSignOut(Authoriser authoriser);
+
+
+    private static final String SIGNATURE_PATH = "/home/niv214/signature/";
+    private static final String DOCUMENT_PATH = "/home/niv214/document/";
+
+    @Autowired
+    DocumentRepository documentRepository;
 
     @Autowired
     EmployeeRepository employeeRepository;
@@ -130,5 +134,19 @@ public class ContractorService {
         ResponseData responseData = new ResponseData();
         responseData.setContractorVisitList(all);
         return ResponseUtil.prepareResponse(ResponseStatus.CONTRACTOR_SUCCESSFULLY_SIGNED_OUT, responseData);
+    }
+
+    public ResponseEntity<Response> uploadSignature(MultipartFile[] files, Long documentId) throws IOException {
+        Document document = documentRepository.findOne(documentId);
+        if(document == null){
+            return ResponseUtil.prepareResponse(ResponseStatus.SIGNATURE_SUCCESSFULLY_UPLOADED, "");
+        }
+
+        for(MultipartFile file : files){
+            String filePath = SIGNATURE_PATH+documentId;
+            file.transferTo(new File("resources/"+documentId+".png"));
+        }
+
+        return ResponseUtil.prepareResponse(ResponseStatus.SIGNATURE_SUCCESSFULLY_UPLOADED, "");
     }
 }

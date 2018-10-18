@@ -11,7 +11,11 @@ public enum ResponseStatus {
     SUCCESSFULLY_FETCHED_SIGND_IN_CONTRACTORS("2006", "Successfully fetched signd in contractors"),
     SUCCESSFULLY_FETCHED_SIGND_OUT_CONTRACTORS("2007", "Successfully fetched signd out contractors"),
     NO_SIGNED_OUT_CONTRACTORS("2008", "no signed in contractors"),
-    CONTRACTOR_SUCCESSFULLY_SIGNED_OUT("2009", "Contractor successfully signed out");
+    CONTRACTOR_SUCCESSFULLY_SIGNED_OUT("2009", "Contractor successfully signed out"),
+    SIGNATURE_SUCCESSFULLY_UPLOADED("2010", "Signature successfully uploaded"),
+    Document_SUCCESSFULLY_UPLOADED("2011", "Document successfully uploaded"),
+    ERROR_IN_DOCUMENT_UPLOAD("2012", "Error in document upload"),
+    ERROR_IN_SIGNATURE_UPLOAD("2013", "Error in signature upload");
 
     ResponseStatus(String code, String message){
         this.code = code;

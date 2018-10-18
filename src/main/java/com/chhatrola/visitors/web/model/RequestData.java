@@ -1,5 +1,4 @@
 package com.chhatrola.visitors.web.model;
-import java.util.Date;
 
 public class RequestData {
     private String branchCode;
@@ -15,6 +14,8 @@ public class RequestData {
     private String contractorIdExpIDDate;
     private Boolean hazardRegViewed;
     private Long contractorId;
+    private Byte[] image;
+    private Long documentId;
 
     public String getBranchCode() {
         return branchCode;
@@ -120,4 +121,19 @@ public class RequestData {
         this.contractorId = contractorId;
     }
 
+    public Byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(Byte[] image) {
+        this.image = image;
+    }
+
+    public Long getDocumentId() {
+        return documentId;
+    }
+
+    public void setDocumentId(Long documentId) {
+        this.documentId = documentId;
+    }
 }

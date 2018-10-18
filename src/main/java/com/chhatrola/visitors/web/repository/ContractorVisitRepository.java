@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository("contractorVisitRepository")
@@ -31,4 +32,10 @@ public interface ContractorVisitRepository extends JpaRepository<ContractorVisit
     @Query("select contractor0_.contractor from ContractorVisit contractor0_ left outer join contractor0_.employee employee1_ where employee1_.employeeId=:employeeId")
     List<String> searchContractor(@Param("employeeId") Long employeeId);
 
+
+//    List<Article> findAllByPublicationTimeBetween(
+//            Date publicationTimeStart,
+//            Date publicationTimeEnd);
+
+    List<ContractorVisit> findAllByVisitInTimeBetween(Date visitInTimeStart, Date visitInTimeEnd);
 }
