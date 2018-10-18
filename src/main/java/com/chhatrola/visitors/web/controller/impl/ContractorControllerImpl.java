@@ -21,6 +21,10 @@ import java.text.ParseException;
 @Api(value="Contractor", description="Contractor Management operation")
 public class ContractorControllerImpl {
 
+
+    private static final String SIGNATURE_PATH = "signature/";
+    private static final String DOCUMENT_PATH = "document/";
+
     @Autowired
     ContractorService contractorService;
 
@@ -51,6 +55,11 @@ public class ContractorControllerImpl {
 
     @RequestMapping(value = "/uploadSignature", method = RequestMethod.POST, produces = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Response> uploadSignature(@RequestParam(value="imgFile") MultipartFile[] files, @RequestParam(value = "documentId") Long documentId) throws IOException {
-        return contractorService.uploadSignature(files,documentId);
+        return contractorService.uploadFile(files,documentId, SIGNATURE_PATH);
+    }
+
+    @RequestMapping(value = "/uploadDocument", method = RequestMethod.POST, produces = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<Response> uploadDocument(@RequestParam(value="imgFile") MultipartFile[] files, @RequestParam(value = "documentId") Long documentId) throws IOException {
+        return contractorService.uploadFile(files,documentId, DOCUMENT_PATH);
     }
 }
